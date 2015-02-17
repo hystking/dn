@@ -7,6 +7,7 @@ class AudioStream extends EventEmitter
     @ctx = new webkitAudioContext()
   
   getSourceStream: ->
+    return Q.when @stream if @stream
     deferred = Q.defer()
     MediaStreamTrack.getSources (infos) =>
       navigator.webkitGetUserMedia {
